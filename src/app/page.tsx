@@ -1,11 +1,12 @@
+import MainPage from '@/components/common/MainPage/MainPage'
 import { Inter } from '@next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main>
-      <h1>Testando</h1>
-    </main>
+    <>
+      <MainPage />
+    </>
   )
 }
