@@ -1,21 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type Categorie = {
-  title: string;
-  fiveBooks: [Book, Book, Book, Book, Book];
-};
-
-type Book = {
-  title: string;
-  author: string;
-  year: number;
-  price: number;
-  image: string;
-  category: string[];
-};
-
-
+import type { Book, Categorie } from "@/@types/Book";
 
 const booksCategories: Categorie[] = [
   {

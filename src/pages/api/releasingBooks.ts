@@ -1,14 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type Book = {
-  title: string;
-  author: string;
-  year: number;
-  price: number;
-  image: string;
-  category: string[];
-};
+import type { Book } from "@/@types/Book";
 
 const books: Book[] = [
   {
@@ -18,7 +10,6 @@ const books: Book[] = [
     price: 10,
     image: "/book1.jpg",
     category: ["Fantasy", "Adventure"],
-
   },
   {
     title: "The Lord of the Rings",

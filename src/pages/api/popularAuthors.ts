@@ -1,11 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type Author = {
-  name: string;
-  image: string;
-  books: number;
-};
+import type { Author } from "@/@types/Author";
 
 const popularAuthors: Author[] = [
   {
