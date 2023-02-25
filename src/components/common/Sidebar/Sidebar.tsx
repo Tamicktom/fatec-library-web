@@ -7,13 +7,13 @@ type Props = {
 
 export default function Sidebar(props: Props) {
   return (
-    <div className='flex flex-col items-center justify-start h-full bg-gray-200/50 w-96'>
-      <div className="flex flex-col items-center justify-start gap-4 p-4">
+    <div className='flex flex-col items-center justify-start h-full py-4 w-96'>
+      <div className="flex flex-col items-center justify-start w-full gap-4 p-4 bg-gray-200/50">
         <span className="text-xl font-bold text-gray-900">
           Faça login em sua conta:
         </span>
-        <div className="flex flex-col items-center justify-start gap-4">
-          <div className="flex flex-col items-center justify-start gap-1">
+        <div className="flex flex-col items-center justify-start w-full gap-4">
+          <div className="flex flex-col items-center justify-start w-full gap-1">
             <label className="text-lg font-bold text-gray-900" htmlFor="email">Email</label>
             <input
               id="email"
@@ -21,7 +21,7 @@ export default function Sidebar(props: Props) {
               className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          <div className="flex flex-col items-center justify-start gap-1">
+          <div className="flex flex-col items-center justify-start w-full gap-1">
             <label className="text-lg font-bold text-gray-900" htmlFor="password">Senha</label>
             <input
               id="password"
