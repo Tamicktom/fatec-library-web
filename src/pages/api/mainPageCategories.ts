@@ -19,7 +19,7 @@ type Book = {
 
 const booksCategories: Categorie[] = [
   {
-    title: "Fantasy",
+    title: "Fantasia",
     fiveBooks: [
       {
         title: "The Hobbit",
