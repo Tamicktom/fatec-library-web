@@ -14,7 +14,7 @@ export default async function RootLayout({ children }: Props) {
     <html lang="pt-br">
       <head />
       <body className='flex flex-col items-center justify-start overflow-x-hidden'>
-        <h1 className='hidden'>Dashboard</h1>
+      <h1 className='hidden'>Login</h1>
         <div>
           {children}
         </div>
