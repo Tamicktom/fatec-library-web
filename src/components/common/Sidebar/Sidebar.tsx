@@ -1,7 +1,7 @@
 "use client";
 //* Libraries imports
 import { useState, useEffect } from "react";
-import { Book, BookmarkSimple, User, Door } from "phosphor-react";
+import { Book, BookmarkSimple, User, Door, UserCircle } from "phosphor-react";
 
 type Props = {
 
@@ -38,12 +38,14 @@ function Login() {
   const [isLogged, setIsLogged] = useState(false);
 
   return (
-    <div className="flex flex-col items-center justify-start w-full gap-4 p-4 bg-gray-200/50">
+    <div className="flex flex-col items-center justify-start w-full gap-4 p-4 transition-all bg-gray-200/50">
       {
         isLogged
           ?
           <div className="flex items-center justify-start gap-4 flexx-row">
-            <img className="w-16 h-16 rounded-full" src="https://avatars.githubusercontent.com/u/4256471?v=4" alt="Avatar" />
+            <div className="w-16 h-16 overflow-hidden rounded-full">
+              <UserCircle className="text-gray-700" size={64} />
+            </div>
             <span className="text-xl font-bold text-gray-900"> Olá, {loginCredentials.email} </span>
           </div>
           : <>
