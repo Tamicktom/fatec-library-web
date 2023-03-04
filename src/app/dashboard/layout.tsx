@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 
 //* Components imports
-
+import DashboardNavbar from '@/components/specific/DashboardNavbar/DashboardNavbar';
 import '../globals.css';
 
 type Props = {
@@ -14,8 +14,8 @@ export default async function RootLayout({ children }: Props) {
     <html lang="pt-br">
       <head />
       <body className='flex flex-col items-center justify-start overflow-x-hidden'>
-        <h1 className='hidden'>Dashboard</h1>
-        <div>
+        <DashboardNavbar />
+        <div className='flex flex-row items-center justify-center w-full h-full'>
           {children}
         </div>
       </body>
