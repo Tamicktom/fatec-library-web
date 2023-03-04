@@ -8,6 +8,7 @@ specifiers:
   autoprefixer: ^10.4.13
   eslint: 8.34.0
   eslint-config-next: 13.1.6
+  keen-slider: ^6.8.5
   next: 13.1.6
   phosphor-react: ^1.4.1
   postcss: ^8.4.21
@@ -25,6 +26,7 @@ dependencies:
   '@types/react-dom': 18.0.10
   eslint: 8.34.0
   eslint-config-next: 13.1.6_7kw3g6rralp5ps6mg3uyzz6azm
+  keen-slider: 6.8.5
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   phosphor-react: 1.4.1_react@18.2.0
   react: 18.2.0
@@ -1609,6 +1611,10 @@ packages:
     dependencies:
       array-includes: 3.1.6
       object.assign: 4.1.4
+    dev: false
+
+  /keen-slider/6.8.5:
+    resolution: {integrity: sha512-9yoosfffgTCrkmbX8kCUMWsn9KDgPSkxBof5/0yXde001D1xao7i9ppfxQCCK0MLnoCa+Rdssby0jFbTTUM4rw==}
     dev: false
 
   /language-subtag-registry/0.3.22:

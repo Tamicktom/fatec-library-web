@@ -27,6 +27,22 @@ const books: Book[] = [
     image: "/book3.jpg",
     category: ["Fantasy", "Adventure"],
   },
+  {
+    title: "The Fellowship of the Ring",
+    author: "J.R.R. Tolkien",
+    year: 1954,
+    price: 15,
+    image: "/book4.jpg",
+    category: ["Fantasy", "Adventure"],
+  },
+  {
+    title: "The Two Towers",
+    author: "J.R.R. Tolkien",
+    year: 1954,
+    price: 15,
+    image: "/book5.jpg",
+    category: ["Fantasy", "Adventure"],
+  }
 ];
 
 export default function handler(
