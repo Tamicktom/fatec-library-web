@@ -5,7 +5,7 @@ import { Inter } from '@next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <div className='flex flex-row items-start justify-start w-full h-full min-h-screen bg-gray-100'>

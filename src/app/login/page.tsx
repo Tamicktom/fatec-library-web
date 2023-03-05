@@ -1,7 +1,5 @@
-"use client";
 
-
-export default function Login(){
+export default async function Login(){
 
   return (
     <div>
