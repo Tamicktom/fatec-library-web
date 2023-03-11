@@ -11,7 +11,8 @@ import InputHolder from "./InputHolder";
 //* CPF
 
 type CPFInputProps = {
-  setCpf: (cpf: string) => void
+  setCpf: (cpf: string) => void;
+  setErrors: (errors:string[]) => void
 }
 
 export default function CpfInput(props: CPFInputProps) {
@@ -23,6 +24,10 @@ export default function CpfInput(props: CPFInputProps) {
     setErros(validateCpf(tmpCpf).errors);
     props.setCpf(tmpCpf)
   }, [tmpCpf])
+
+  useEffect(()=>{
+    props.setErrors(erros);
+  }, [erros]);
 
   return (
     <InputHolder

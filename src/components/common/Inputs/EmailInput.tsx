@@ -11,6 +11,7 @@ import InputHolder from "./InputHolder";
 
 type EmailInputProps = {
   setEmail: (email: string) => void
+  setErrors: (errors:string[]) => void
 }
 
 export default function EmailInput(props: EmailInputProps) {
@@ -21,6 +22,10 @@ export default function EmailInput(props: EmailInputProps) {
     setErrors(validateEmail(tmpEmail).errors);
     props.setEmail(tmpEmail);
   }, [tmpEmail]);
+
+  useEffect(()=>{
+    props.setErrors(errors);
+  }, [errors]);
 
   return (
     <InputHolder

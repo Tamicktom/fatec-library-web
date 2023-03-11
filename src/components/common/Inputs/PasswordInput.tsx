@@ -10,6 +10,7 @@ import InputHolder from "./InputHolder";
 //* Password
 type PasswordInputProps = {
   setPassword: (pass: string) => void
+  setErrors: (errors:string[]) => void
 }
 
 export default function PasswordInput(props: PasswordInputProps) {
@@ -23,6 +24,10 @@ export default function PasswordInput(props: PasswordInputProps) {
       props.setPassword(tmpPassword);
     }
   }, [tmpPassword]);
+
+  useEffect(()=>{
+    props.setErrors(errors);
+  }, [errors]);
 
   return (
     <InputHolder

@@ -12,6 +12,7 @@ import InputHolder from "./InputHolder";
 //* Telefone
 type TelephoneInputProps = {
   setTelephone: (telephone: string) => void
+  setErrors: (errors:string[]) => void
 }
 
 export default function TelephoneInput(props: TelephoneInputProps) {
@@ -21,17 +22,12 @@ export default function TelephoneInput(props: TelephoneInputProps) {
 
   useEffect(() => {
     setErros(validateTelephone(tmpTelephone).errors);
+    props.setTelephone(tmpTelephone);
   }, [tmpTelephone]);
 
-  useEffect(() => {
-    setIsTelephoneValid(erros.length === 0);
+  useEffect(()=>{
+    props.setErrors(erros);
   }, [erros]);
-
-  useEffect(() => {
-    if (isTelephoneValid) {
-      props.setTelephone(tmpTelephone);
-    }
-  }, [isTelephoneValid]);
 
   return (
     <InputHolder

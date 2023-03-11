@@ -12,12 +12,37 @@ import TelephoneInput from "@/components/common/Inputs/TelephoneInput";
 
 export default function NewUserForm() {
   const [name, setName] = useState<string>("");
+  const [nameErrors, setNameErrors] = useState<string[]>([]);
   const [cpf, setCpf] = useState<string>("");
+  const [cpfErrors, setCpfErrors] = useState<string[]>([]);
   const [telephone, setTelephone] = useState<string>("");
+  const [telephoneErrors, setTelephoneErrors] = useState<string[]>([]);
   const [email, setEmail] = useState<string>("");
+  const [emailErrors, setEmailErrors] = useState<string[]>([]);
   const [cep, setCep] = useState<string>("");
+  const [cepErrors, setCepErrors] = useState<string[]>([]);
   const [password, setPassword] = useState<string>("");
+  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
   const [rePassword, setRePassword] = useState<string>("");
+  const [rePasswordErrors, setRePasswordErrors] = useState<string[]>([]);
+  const [isOk, setIsOk] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (
+      nameErrors.length > 0 ||
+      cpfErrors.length > 0 ||
+      telephoneErrors.length > 0 ||
+      emailErrors.length > 0 ||
+      cepErrors.length > 0 ||
+      passwordErrors.length > 0 ||
+      rePasswordErrors.length > 0
+    ) {
+      setIsOk(false);
+    } else {
+      setIsOk(true)
+    }
+  }, [nameErrors, cpfErrors, telephoneErrors, emailErrors, cepErrors, passwordErrors, rePasswordErrors]);
+
 
   return (
     <div className="flex flex-col items-center justify-center w-auto gap-8 p-8 bg-gray-100 rounded-lg">
@@ -28,13 +53,13 @@ export default function NewUserForm() {
       </div>
 
       <div className="flex flex-col items-center justify-start w-full gap-2">
-        <NameInput setName={setName} />
-        <CpfInput setCpf={setCpf} />
-        <CepInput setCep={setCep} />
-        <TelephoneInput setTelephone={setTelephone} />
-        <EmailInput setEmail={setEmail} />
-        <PasswordInput setPassword={setPassword} />
-        <PasswordInput setPassword={setRePassword} />
+        <NameInput setName={setName} setErrors={setNameErrors} />
+        <CpfInput setCpf={setCpf} setErrors={setNameErrors} />
+        <CepInput setCep={setCep} setErrors={setNameErrors} />
+        <TelephoneInput setTelephone={setTelephone} setErrors={setNameErrors} />
+        <EmailInput setEmail={setEmail} setErrors={setNameErrors} />
+        <PasswordInput setPassword={setPassword} setErrors={setNameErrors} />
+        <PasswordInput setPassword={setRePassword} setErrors={setNameErrors} />
       </div>
 
       <button
@@ -51,8 +76,8 @@ export default function NewUserForm() {
             password === "" ||
             rePassword === ""
           ) return alert("Preencha todos os campos!");
-          else {
-            alert("Usuário cadastrado com sucesso!");
+          if (isOk) {
+            alert("Usuário criado com sucesso");
           }
         }}
       >

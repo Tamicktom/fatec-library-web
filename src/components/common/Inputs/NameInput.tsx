@@ -9,7 +9,8 @@ import InputHolder from "./InputHolder";
 
 //* User name input
 type NameInputProps = {
-  setName: (title: string) => void
+  setName: (title: string) => void;
+  setErrors: (errors:string[]) => void
 }
 
 export default function NameInput(props: NameInputProps) {
@@ -22,6 +23,10 @@ export default function NameInput(props: NameInputProps) {
       props.setName(tmpName);
     }
   }, [tmpName]);
+
+  useEffect(()=>{
+    props.setErrors(erros);
+  }, [erros]);
 
   return (
     <InputHolder

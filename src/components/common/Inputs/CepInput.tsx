@@ -15,6 +15,7 @@ import useCep from "@/hooks/common/useCep";
 
 type CepInputProps = {
   setCep: (telephone: string) => void
+  setErrors: (errors:string[]) => void
 }
 
 /**
@@ -37,6 +38,10 @@ export default function CepInput(props: CepInputProps) {
       props.setCep(cep);
     }
   }, [cep]);
+
+  useEffect(()=>{
+    props.setErrors(erros);
+  }, [erros]);
 
   return (
     <InputHolder
