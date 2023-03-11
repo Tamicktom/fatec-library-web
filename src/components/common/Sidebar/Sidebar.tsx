@@ -2,6 +2,10 @@
 //* Libraries imports
 import { useState, useEffect } from "react";
 import { Book, BookmarkSimple, User, Door, UserCircle } from "phosphor-react";
+import Link from "next/link";
+
+//* Store
+import userStore, { type UserCredentials } from "@/store/user";
 
 type Props = {
 
@@ -9,7 +13,7 @@ type Props = {
 
 export default function Sidebar(props: Props) {
   return (
-    <div className='flex flex-col items-center justify-start h-full py-4 w-96'>
+    <div className='flex flex-col items-center justify-start h-full py-4 min-w-[300px]'>
       <Login />
       <NavbarOptions />
     </div>
@@ -40,20 +44,58 @@ function NavbarOptions() {
 }
 
 function Login() {
-  const [loginCredentials, setLoginCredentials] = useState({ email: '', password: '' });
-  const [isLogged, setIsLogged] = useState(false);
+  const credentials = userStore((state) => state.credentials);
+
+  const [loginCredentials, setLoginCredentials] = useState<UserCredentials>({
+    email: credentials.email,
+    password: credentials.password,
+    isLogged: credentials.isLogged,
+    nickname: credentials.nickname,
+    userRole: credentials.userRole,
+  });
+  const [isLogged, setIsLogged] = useState(credentials.isLogged);
+
+  useEffect(() => {
+    userStore.setState({
+      credentials: {
+        ...loginCredentials,
+        userRole: loginCredentials.email === "admin@admin.com" ? "admin" : "client",
+        isLogged,
+      },
+    });
+  }, [loginCredentials]);
+
+  useEffect(() => {
+    userStore.setState({
+      credentials: {
+        ...loginCredentials,
+        userRole: loginCredentials.email === "admin@admin.com" ? "admin" : "client",
+        isLogged,
+      },
+    });
+  }, [isLogged]);
 
   return (
     <div className="flex flex-col items-center justify-start w-full gap-4 p-4 transition-all bg-gray-200/50">
       {
         isLogged
           ?
-          <div className="flex items-center justify-start gap-4 flexx-row">
-            <div className="w-16 h-16 overflow-hidden rounded-full">
-              <UserCircle className="text-gray-700" size={64} />
+          <>
+            <div className="flex items-center justify-start gap-4 flexx-row">
+              <div className="w-16 h-16 overflow-hidden rounded-full">
+                <UserCircle className="text-gray-700" size={64} />
+              </div>
+              <span className="text-xl font-bold text-gray-900"> Olá, {loginCredentials.email} </span>
             </div>
-            <span className="text-xl font-bold text-gray-900"> Olá, {loginCredentials.email} </span>
-          </div>
+            {
+              credentials.userRole === "admin" &&
+              <Link href="/dashboard">
+                <button className="w-full p-2 mt-4 text-sm font-bold text-white rounded-lg bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                  Acessar painel de admin
+                </button>
+              </Link>
+            }
+          </>
           : <>
             <span className="text-xl font-bold text-gray-900">
               Faça login em sua conta:
