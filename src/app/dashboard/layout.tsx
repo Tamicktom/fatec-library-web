@@ -10,9 +10,9 @@ type Props = {
 
 export default async function RootLayout({ children }: Props) {
   return (
-    <div className='w-full h-screen bg-blue-300 flex flex-row'>
+    <div className='flex flex-row w-full h-screen'>
       <DashboardSidebar />
-      <div className="w-full h-full flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center w-full h-full">
         {
           children
         }

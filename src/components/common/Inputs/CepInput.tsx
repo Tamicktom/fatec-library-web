@@ -42,11 +42,13 @@ export default function CepInput(props: CepInputProps) {
     <InputHolder
       thereAreErrors={erros.length > 0}
       errors={erros}
+      label="CEP"
+      labelFor="cep"
     >
       <MapPin size={28} className="text-gray-900" />
       <Cleave
         placeholder="cep"
-        className="outline-none bg-transparent w-full"
+        className="w-full bg-transparent outline-none"
         onChange={(e) => { handleChange(e.target.value) }}
         required
         type="tel"
@@ -55,6 +57,7 @@ export default function CepInput(props: CepInputProps) {
           delimiters: ["-"],
           blocks: [5, 3]
         }}
+        id="cep"
       />
     </InputHolder>
   );

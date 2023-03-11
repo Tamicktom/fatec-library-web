@@ -28,6 +28,8 @@ export default function EmailInput(props: EmailInputProps) {
     <InputHolder
       thereAreErrors={errors.length > 0}
       errors={errors}
+      label="Email"
+      labelFor="email"
     >
       <Envelope size={28} className="text-gray-900" />
       <input
@@ -36,6 +38,7 @@ export default function EmailInput(props: EmailInputProps) {
         onChange={(e) => { setTmpEmail(e.target.value) }}
         placeholder="exemplo@exemplo.com"
         required
+        id="email"
       />
     </InputHolder>
   );

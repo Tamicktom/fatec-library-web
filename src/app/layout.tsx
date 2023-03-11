@@ -12,7 +12,7 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang="pt-br">
       <head />
-      <body className='flex flex-col items-center justify-start overflow-x-hidden bg-green-900'>
+      <body className='flex flex-col items-center justify-start overflow-x-hidden'>
         {
           children
         }

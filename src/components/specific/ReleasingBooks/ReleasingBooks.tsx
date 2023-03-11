@@ -20,7 +20,7 @@ export default function ReleasingBooks() {
     slides: {
       perView: 4,
       spacing: 32,
-    }
+    },
   });
 
   useEffect(() => {
@@ -34,26 +34,29 @@ export default function ReleasingBooks() {
     <div
       className="flex flex-row items-start justify-start w-full gap-8 pl-8 overflow-hidden"
     >
-      <div
-        ref={sliderRef}
-        className="keen-slider"
-      >
-        {
-          books.length > 0
-            ? books.map((book, index) => {
-              return (
-                <ReleasingBookCard
-                  key={index}
-                  bookCover={book.image}
-                  title={book.title}
-                  author={book.author}
-                  price={book.price}
-                />
-              );
-            })
-            : <div className="h-60" />
-        }
-      </div>
+      {
+        books.length > 0 &&
+        <>
+          <div
+            ref={sliderRef}
+            className="keen-slider"
+          >
+            {
+              books.map((book, index) => {
+                return (
+                  <ReleasingBookCard
+                    key={index}
+                    bookCover={book.image}
+                    title={book.title}
+                    author={book.author}
+                    price={book.price}
+                  />
+                );
+              })
+            }
+          </div>
+        </>
+      }
     </div>
   );
 }

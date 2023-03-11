@@ -27,11 +27,14 @@ export default function NameInput(props: NameInputProps) {
     <InputHolder
       thereAreErrors={erros.length > 0}
       errors={erros}
+      label="Nome"
+      labelFor="name"
     >
       <User size={28} className="text-gray-900" />
       <input
-        className="outline-none bg-transparent w-full"
+        className="w-full bg-transparent outline-none"
         type="text"
+        id="name"
         onChange={(e) => { setTmpName(e.target.value) }}
         placeholder="Nome do usuário"
         required

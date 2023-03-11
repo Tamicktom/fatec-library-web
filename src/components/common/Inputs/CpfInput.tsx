@@ -36,6 +36,9 @@ export default function CpfInput(props: CPFInputProps) {
   return (
     <InputHolder
       thereAreErrors={erros.length > 0}
+      errors={erros}
+      label="CPF"
+      labelFor="cpf"
     >
       <IdentificationCard size={28} className="text-gray-900" />
       <Cleave
@@ -49,6 +52,7 @@ export default function CpfInput(props: CPFInputProps) {
           blocks: [3, 3, 3, 2],
           numericOnly: true,
         }}
+        id="cpf"
       />
     </InputHolder>
   );

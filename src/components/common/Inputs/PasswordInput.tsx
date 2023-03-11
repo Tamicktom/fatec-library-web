@@ -1,7 +1,7 @@
 "use client";
 
 //* Libraries imports
-import { useEffect, useState } from "react";
+import { useEffect, useState, useId } from "react";
 import { Lock } from "phosphor-react";
 
 //* Components imports
@@ -15,6 +15,7 @@ type PasswordInputProps = {
 export default function PasswordInput(props: PasswordInputProps) {
   const [tmpPassword, setTmpPassword] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
+  const id = useId();
 
   useEffect(() => {
     setErrors(validatePassword(tmpPassword).errors);
@@ -29,6 +30,8 @@ export default function PasswordInput(props: PasswordInputProps) {
     <InputHolder
       thereAreErrors={errors.length > 0}
       errors={errors}
+      label="Senha"
+      labelFor={id}
     >
       <Lock size={28} className="text-gray-900" />
       <input
@@ -37,6 +40,7 @@ export default function PasswordInput(props: PasswordInputProps) {
         onChange={(e) => { setTmpPassword(e.target.value) }}
         placeholder="************"
         required
+        id={id}
       />
     </InputHolder>
   )

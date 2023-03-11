@@ -19,19 +19,15 @@ export default function NewUserForm() {
   const [password, setPassword] = useState<string>("");
   const [rePassword, setRePassword] = useState<string>("");
 
-  useEffect(() => {
-    console.log({
-      name, cpf, telephone, email, cep, password, rePassword
-    });
-  }, [name, cpf, telephone, email, cep, password, rePassword]);
-
   return (
-    <div className="w-96 p-4 bg-white flex flex-col justify-center items-center rounded-lg gap-4">
+    <div className="flex flex-col items-center justify-center w-auto gap-8 p-8 bg-gray-100 rounded-lg">
 
-      <h1 className="font-bold text-3xl">Cadastro de usuário</h1>
-      <p className="w-72">Insira as informações do usuário que deseja cadastrar: </p>
+      <div className="flex flex-col items-start justify-start mb-4 text-center">
+        <h1 className="text-3xl font-bold">Cadastro de usuário</h1>
+        <p className="w-72">Insira as informações do usuário que deseja cadastrar: </p>
+      </div>
 
-      <div className="w-full flex flex-col justify-start items-center gap-2">
+      <div className="flex flex-col items-center justify-start w-full gap-2">
         <NameInput setName={setName} />
         <CpfInput setCpf={setCpf} />
         <CepInput setCep={setCep} />
@@ -42,7 +38,7 @@ export default function NewUserForm() {
       </div>
 
       <button
-        className="w-72 bg-blue-500 text-white rounded-lg p-2"
+        className="p-2 mt-4 text-sm font-bold text-white rounded-lg w-72 bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
       >
         Cadastrar usuário
       </button>

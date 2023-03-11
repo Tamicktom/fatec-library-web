@@ -37,6 +37,8 @@ export default function TelephoneInput(props: TelephoneInputProps) {
     <InputHolder
       thereAreErrors={erros.length > 0}
       errors={erros}
+      label="Telefone"
+      labelFor="telephone"
     >
       <Phone size={28} className="text-gray-900" />
       <Cleave
@@ -50,6 +52,7 @@ export default function TelephoneInput(props: TelephoneInputProps) {
           phone: true,
           phoneRegionCode: 'BR',
         }}
+        id="telephone"
       />
     </InputHolder>
   );
