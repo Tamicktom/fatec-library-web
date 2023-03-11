@@ -45,7 +45,7 @@ export default function DashboardSidebar() {
 
       <Link href="/">
         <button className="w-full p-2 mt-4 text-sm font-bold text-white rounded-lg bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-          Voltar para o site
+          Ir para o site
         </button>
       </Link>
 

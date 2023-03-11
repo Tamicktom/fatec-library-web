@@ -21,17 +21,8 @@ export default function CpfInput(props: CPFInputProps) {
 
   useEffect(() => {
     setErros(validateCpf(tmpCpf).errors);
-  }, [])
-
-  useEffect(() => {
-    setIsCpfOk(erros.length === 0);
-  }, [erros]);
-
-  useEffect(() => {
-    if (isCpfOk) {
-      props.setCpf(tmpCpf);
-    }
-  }, [isCpfOk]);
+    props.setCpf(tmpCpf)
+  }, [tmpCpf])
 
   return (
     <InputHolder
@@ -43,7 +34,7 @@ export default function CpfInput(props: CPFInputProps) {
       <IdentificationCard size={28} className="text-gray-900" />
       <Cleave
         placeholder="123.123.123-12"
-        className="outline-none bg-transparent w-full"
+        className="w-full bg-transparent outline-none"
         onChange={(e) => { setTmpCpf(e.target.value) }}
         required
         type="text"

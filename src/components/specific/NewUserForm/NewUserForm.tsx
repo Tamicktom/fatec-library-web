@@ -39,6 +39,22 @@ export default function NewUserForm() {
 
       <button
         className="p-2 mt-4 text-sm font-bold text-white rounded-lg w-72 bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+        onClick={() => {
+          if (password !== rePassword) return alert("As senhas não coincidem!");
+          console.log(name, cpf, telephone, email, cep, password, rePassword);
+          if (
+            name === "" ||
+            cpf === "" ||
+            telephone === "" ||
+            email === "" ||
+            cep === "" ||
+            password === "" ||
+            rePassword === ""
+          ) return alert("Preencha todos os campos!");
+          else {
+            alert("Usuário cadastrado com sucesso!");
+          }
+        }}
       >
         Cadastrar usuário
       </button>

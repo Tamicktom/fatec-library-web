@@ -19,9 +19,7 @@ export default function EmailInput(props: EmailInputProps) {
 
   useEffect(() => {
     setErrors(validateEmail(tmpEmail).errors);
-    if (errors.length === 0) {
-      props.setEmail(tmpEmail);
-    }
+    props.setEmail(tmpEmail);
   }, [tmpEmail]);
 
   return (
@@ -33,7 +31,7 @@ export default function EmailInput(props: EmailInputProps) {
     >
       <Envelope size={28} className="text-gray-900" />
       <input
-        className="outline-none bg-transparent w-full"
+        className="w-full bg-transparent outline-none"
         type="email"
         onChange={(e) => { setTmpEmail(e.target.value) }}
         placeholder="exemplo@exemplo.com"

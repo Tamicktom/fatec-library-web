@@ -19,10 +19,8 @@ export default function PasswordInput(props: PasswordInputProps) {
 
   useEffect(() => {
     setErrors(validatePassword(tmpPassword).errors);
-    if (errors.length === 0) {
-      if (tmpPassword.length > 0) {
-        props.setPassword(tmpPassword);
-      }
+    if (tmpPassword.length > 0) {
+      props.setPassword(tmpPassword);
     }
   }, [tmpPassword]);
 
@@ -35,7 +33,7 @@ export default function PasswordInput(props: PasswordInputProps) {
     >
       <Lock size={28} className="text-gray-900" />
       <input
-        className="outline-none bg-transparent w-full"
+        className="w-full bg-transparent outline-none"
         type="password"
         onChange={(e) => { setTmpPassword(e.target.value) }}
         placeholder="************"
