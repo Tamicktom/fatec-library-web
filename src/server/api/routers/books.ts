@@ -11,7 +11,8 @@ import { resolve } from "path";
 export const books = createTRPCRouter({
   mainBannerList: publicProcedure.query(async ({ ctx }) => {
     const books = await ctx.prisma.book.findMany({
-      //search books published in the last 7 days, bring the first 5
+      //search books published in the last 7 days, bring no more than 10
+      take: 10,
       where: {
         createdAt: {
           gte: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000),
