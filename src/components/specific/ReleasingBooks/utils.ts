@@ -1,9 +1,7 @@
 //* Type imports
-import { Book } from "@/@types/Book";
+import { api } from "pnpm/utils/api";
 
 export async function getBooks() {
-  const response = await fetch("/api/releasingBooks");
-  const data: Book[] = await response.json();
-  console.log(data);
-  return data;
+  const books = await api.books.mainBannerList.useQuery();
+  return books;
 }

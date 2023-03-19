@@ -1,5 +1,3 @@
-"use client";
-
 //* Libraries imports
 import SearchInput from "../SearchInput/SearchInput";
 

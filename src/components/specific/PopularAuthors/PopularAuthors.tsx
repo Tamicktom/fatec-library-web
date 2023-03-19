@@ -1,46 +1,30 @@
-"use client";
-
 //* Libraries imports
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-type Author = {
-  name: string;
-  image: string;
-  books: number;
-};
-
-async function getPopularAuthors() {
-  const response = await fetch("/api/popularAuthors");
-  const data: Author[] = await response.json();
-  return data;
-}
+import { api } from "pnpm/utils/api";
 
 export default function PopularAuthors() {
-  const [authors, setAuthors] = useState<Author[]>([]);
 
-  useEffect(() => {
-    getPopularAuthors()
-      .then((data) => {
-        setAuthors(data);
-      });
-  }, []);
+  const authors = api.authors.getPopularAuthors.useQuery();
 
   return (
     <div className="flex flex-col items-start justify-start w-[400px] bg-gray-200/50 gap-2 p-8 rounded-l-2xl transition-all">
       <h1 className="text-3xl font-bold text-gray-800">Autores mais populares</h1>
       <div className="flex flex-col items-start justify-start gap-4 transition-all">
         {
-          authors.map((author, index) => {
-            return (
-              <AuthorCard
-                key={index}
-                name={author.name}
-                image={author.image}
-                books={author.books}
-              />
-            );
-          })
+          authors && authors.data && authors.data.length > 0
+            ? authors.data.map((author, index) => {
+              return (
+                <AuthorCard
+                  key={index}
+                  name={author.name}
+                  image={author.image}
+                  books={author.booksCount}
+                />
+              );
+            })
+            : <div className="h-60" />
         }
       </div>
     </div>

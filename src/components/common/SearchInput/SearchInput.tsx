@@ -1,5 +1,5 @@
+//* Libraries imports
 import { MagnifyingGlass } from "phosphor-react";
-
 
 export default function SearchInput() {
   return (

@@ -1,12 +1,12 @@
 "use client";
 //* Components imports
-import BookCategories from "@/components/specific/BookCategories/BookCategories";
-import PopularAuthors from "@/components/specific/PopularAuthors/PopularAuthors";
-import ReleasingBooks from "@/components/specific/ReleasingBooks/ReleasingBooks";
+import BookCategories from "../../specific/BookCategories/BookCategories";
+import PopularAuthors from "../../specific/PopularAuthors/PopularAuthors";
+import ReleasingBooks from "../../specific/ReleasingBooks/ReleasingBooks";
 
 export default function MainPage() {
   return (
-    
+
     <div className="flex flex-col w-full gap-24 py-8">
       <ReleasingBooks />
 

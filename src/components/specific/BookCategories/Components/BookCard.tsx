@@ -4,10 +4,14 @@ import Image from "next/image";
 //* Components imports
 import CategorySpan from "./CategorySpan";
 
-//* Types imports
-import type { Book } from "@/@types/Book";
+type Props = {
+  image: string;
+  title: string;
+  author: string;
+  category: string[];
+}
 
-export default function BookCard(props: Book) {
+export default function BookCard(props: Props) {
   const cut = 32;
   //show only the first cut characters of the title
   const title = props.title.length > cut ? props.title.slice(0, cut) + "..." : props.title;

@@ -1,13 +1,12 @@
-"use client";
 import { useEffect, useState } from "react";
 
 //* Components imports
-import CepInput from "@/components/common/Inputs/CepInput";
-import CpfInput from "@/components/common/Inputs/CpfInput";
-import EmailInput from "@/components/common/Inputs/EmailInput";
-import NameInput from "@/components/common/Inputs/NameInput";
-import PasswordInput from "@/components/common/Inputs/PasswordInput";
-import TelephoneInput from "@/components/common/Inputs/TelephoneInput";
+import CepInput from "pnpm/components/common/Inputs/CepInput";
+import CpfInput from "pnpm/components/common/Inputs/CpfInput";
+import EmailInput from "pnpm/components/common/Inputs/EmailInput";
+import NameInput from "pnpm/components/common/Inputs/NameInput";
+import PasswordInput from "pnpm/components/common/Inputs/PasswordInput";
+import TelephoneInput from "pnpm/components/common/Inputs/TelephoneInput";
 
 
 export default function NewUserForm() {

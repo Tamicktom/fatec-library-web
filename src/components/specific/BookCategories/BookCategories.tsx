@@ -1,36 +1,21 @@
-"use client";
-
-//* Libraries imports
-import { useEffect, useState } from "react";
-
 //* Components imports
 import Category from "./Components/Category";
 
-//* Types imports
-import type { Categorie } from "@/@types/Book";
-
-async function getCategories() {
-  const response = await fetch("/api/mainPageCategories");
-  const data: Categorie[] = await response.json();
-  return data;
-}
+import { api } from "pnpm/utils/api";
 
 export default function BookCategories() {
-  const [categories, setCategories] = useState<Categorie[]>([]);
-
-  useEffect(() => {
-    getCategories()
-      .then((data) => {
-        setCategories(data);
-      });
-  }, []);
+  const categories = api.categorie.getAll.useQuery();
 
   return (
     <div className="flex flex-col items-start justify-start w-full gap-8 transition-all">
       {
-        categories.length > 0
-          ? categories.map((categorie, index) => {
-            return <Category key={index} {...categorie} />
+        categories?.data && categories.data?.length > 0
+          ? categories.data.map((categorie, index) => {
+            return <Category
+              key={index}
+              categorieId={categorie.id}
+              title={categorie.name}
+            />
           })
           : <div className="h-60" />
       }

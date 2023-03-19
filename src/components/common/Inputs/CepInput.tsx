@@ -9,7 +9,7 @@ import Cleave from "cleave.js/react";
 import InputHolder from "./InputHolder";
 
 //* Hooks
-import useCep from "@/hooks/common/useCep";
+import useCep from "pnpm/hooks/common/useCep";
 
 //* CEP
 
