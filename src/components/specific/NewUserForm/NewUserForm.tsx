@@ -7,6 +7,8 @@ import EmailInput from "pnpm/components/common/Inputs/EmailInput";
 import NameInput from "pnpm/components/common/Inputs/NameInput";
 import PasswordInput from "pnpm/components/common/Inputs/PasswordInput";
 import TelephoneInput from "pnpm/components/common/Inputs/TelephoneInput";
+import NumberInput from "pnpm/components/common/Inputs/NumberInput";
+import TextInput from "pnpm/components/common/Inputs/TextInput";
 
 
 export default function NewUserForm() {
@@ -18,13 +20,37 @@ export default function NewUserForm() {
   const [telephoneErrors, setTelephoneErrors] = useState<string[]>([]);
   const [email, setEmail] = useState<string>("");
   const [emailErrors, setEmailErrors] = useState<string[]>([]);
+
   const [cep, setCep] = useState<string>("");
   const [cepErrors, setCepErrors] = useState<string[]>([]);
+  const [number, setNumber] = useState<number>(0);
+  const [numberErrors, setNumberErrors] = useState<string[]>([]);
+  const [street, setStreet] = useState<string>("");
+  const [neighbourhood, setNeighbourhood] = useState<string>("");
+  const [city, setCity] = useState<string>("");
+  const [state, setState] = useState<string>("");
+
+  const [defaultAdress, setDefaultAdress] = useState<{
+    street: string,
+    neighbourhood: string,
+    city: string,
+    state: string
+  }>({
+    street: "",
+    neighbourhood: "",
+    city: "",
+    state: ""
+  });
+
   const [password, setPassword] = useState<string>("");
   const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
   const [rePassword, setRePassword] = useState<string>("");
   const [rePasswordErrors, setRePasswordErrors] = useState<string[]>([]);
   const [isOk, setIsOk] = useState<boolean>(false);
+
+  function setDefault() {
+
+  }
 
   useEffect(() => {
     if (
@@ -51,14 +77,29 @@ export default function NewUserForm() {
         <p className="w-72">Insira as informações do usuário que deseja cadastrar: </p>
       </div>
 
-      <div className="flex flex-col items-center justify-start w-full gap-2">
-        <NameInput setName={setName} setErrors={setNameErrors} />
-        <CpfInput setCpf={setCpf} setErrors={setNameErrors} />
-        <CepInput setCep={setCep} setErrors={setNameErrors} />
-        <TelephoneInput setTelephone={setTelephone} setErrors={setNameErrors} />
-        <EmailInput setEmail={setEmail} setErrors={setNameErrors} />
-        <PasswordInput setPassword={setPassword} setErrors={setNameErrors} />
-        <PasswordInput setPassword={setRePassword} setErrors={setNameErrors} />
+      <div className="flex flex-row items-center justify-start w-full gap-8">
+        <div className="flex flex-col items-start justify-start w-full gap-2">
+          <NameInput setName={setName} setErrors={setNameErrors} />
+          <CpfInput setCpf={setCpf} setErrors={setNameErrors} />
+          <TelephoneInput setTelephone={setTelephone} setErrors={setNameErrors} />
+          <EmailInput setEmail={setEmail} setErrors={setNameErrors} />
+          <PasswordInput setPassword={setPassword} setErrors={setNameErrors} />
+          <PasswordInput setPassword={setRePassword} setErrors={setNameErrors} />
+        </div>
+        <div className="flex flex-col items-start justify-start w-full gap-2">
+          <CepInput
+            setCep={setCep}
+            setErrors={setNameErrors}
+            setAdress={(neighbourhood: string, street: string, city: string, state: string) => {
+              setDefaultAdress({ neighbourhood, street, city, state });
+            }}
+          />
+          <NumberInput label="Número" setNumber={setNumber} setErrors={setNameErrors} />
+          <TextInput label="Rua" setText={setStreet} min={0} max={255} value={defaultAdress.street} />
+          <TextInput label="Bairro" setText={setNeighbourhood} min={0} max={255} value={defaultAdress.neighbourhood} />
+          <TextInput label="Cidade" setText={setCity} min={0} max={255} value={defaultAdress.city} />
+          <TextInput label="Estado" setText={setState} min={0} max={255} value={defaultAdress.state} />
+        </div>
       </div>
 
       <button

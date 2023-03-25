@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
-  thereAreErrors: boolean;
+  thereAreErrors?: boolean;
   errors?: string[];
   label: string;
   labelFor: string;
@@ -19,7 +19,7 @@ export default function InputHolder(props: Props) {
     <div className="flex flex-col w-full my-1">
       <label
         htmlFor={props.labelFor}
-        className="w-full text-sm text-gray-800 text-start"
+        className="w-full text-sm text-gray-800 text-start font-bold"
       >
         {props.label}
       </label>

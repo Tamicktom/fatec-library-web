@@ -15,7 +15,8 @@ import useCep from "pnpm/hooks/common/useCep";
 
 type CepInputProps = {
   setCep: (telephone: string) => void
-  setErrors: (errors:string[]) => void
+  setErrors: (errors: string[]) => void
+  setAdress: (neighbourhood: string, street: string, city: string, state: string) => void
 }
 
 /**
@@ -27,7 +28,7 @@ type CepInputProps = {
 
 export default function CepInput(props: CepInputProps) {
   const [tmpCep, setCep] = useState<string>("");
-  const { erros, cep, isCepOk } = useCep(tmpCep);
+  const { errors, cepData, cep, isCepOk } = useCep(tmpCep);
 
   const handleChange = (e: string) => {
     setCep(e);
@@ -36,17 +37,27 @@ export default function CepInput(props: CepInputProps) {
   useEffect(() => {
     if (isCepOk) {
       props.setCep(cep);
+
     }
   }, [cep]);
 
-  useEffect(()=>{
-    props.setErrors(erros);
-  }, [erros]);
+  useEffect(() => {
+    if (isCepOk) {
+      if (cepData) {
+        console.log("CEP DATA: ", cepData);
+        props.setAdress(cepData.bairro, cepData.logradouro, cepData.localidade, cepData.uf)
+      }
+    }
+  }, [cepData]);
+
+  useEffect(() => {
+    props.setErrors(errors);
+  }, [errors]);
 
   return (
     <InputHolder
-      thereAreErrors={erros.length > 0}
-      errors={erros}
+      thereAreErrors={errors.length > 0}
+      errors={errors}
       label="CEP"
       labelFor="cep"
     >
@@ -67,4 +78,3 @@ export default function CepInput(props: CepInputProps) {
     </InputHolder>
   );
 }
-

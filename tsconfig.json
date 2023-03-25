@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-  ],
+, "__tests__/index.test.tsx"  ],
   "exclude": ["node_modules"]
 }

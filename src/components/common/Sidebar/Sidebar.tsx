@@ -49,14 +49,7 @@ function Login() {
   return (
     <div className="w-full flex flex-rol justify-center items-center p-8">
       <div className="flex flex-col items-center justify-center w-full gap-4">
-        {
-          sesstion.data?.user && sesstion.data.user.image
-            ? <img
-              className="w-24 h-24 rounded-full"
-              src={sesstion.data.user.image}
-              alt="user" />
-            : <UserCircle className="text-gray-700" size={96} />
-        }
+        <UserCircle className="text-gray-700" size={100} />
         <span className="text-2xl font-bold text-gray-800">
           {sesstion?.data?.user ? sesstion.data.user.name : "Login"}
         </span>

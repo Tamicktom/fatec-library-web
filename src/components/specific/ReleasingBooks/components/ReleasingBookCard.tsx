@@ -12,7 +12,7 @@ export default function ReleasingBookCard(props: ReleasingBookCardProps) {
   const price = props.price.toFixed(2).split(".");
 
   return (
-    <div className="keen-slider__slide w-[400px] min-w-[400px] max-w-[400px] h-60 relative flex flex-col justify-end items-center">
+    <div className="keen-slider__slide w-[400px] h-60 relative flex flex-col justify-end items-center">
       {/* last release */}
       <div className="relative flex flex-row justify-end w-full h-32 pt-1 pb-4 pr-2 overflow-hidden rounded-lg pl-44">
         {/* bg */}

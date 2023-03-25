@@ -1,31 +1,27 @@
-//* Libraries imports
 import { useState, useEffect } from "react";
-
-//* Custom hooks imports
 import useDebounce from "./useDebouncer";
 
-/**
- * Hook to get cep data from viacep.com.br API
- *
- * @param cepText Cep text to be validated and used to get data from API
- *
- * @returns cep, the cep text
- * @returns cepData, the cep data from API
- * @returns isCepOk, boolean to check if cep is valid
- * @returns erros, array of errors
- */
+interface CepInfo {
+  bairro: string;
+  logradouro: string;
+  localidade: string;
+  uf: string;
+  cep: string;
+  complemento: string;
+}
 
 export default function useCep(cepText: string) {
   const [cep, setCep] = useState<string>("");
-  const [cepData, setCepData] = useState<any>(null);
+  const [cepData, setCepData] = useState<CepInfo | null>(null);
   const [isCepOk, setCepOk] = useState<boolean>(false);
-  const [erros, setErros] = useState<string[]>([]);
+  const [errors, setErrors] = useState<string[]>([]);
   const debouncedText = useDebounce<string>(cepText, 500);
 
   useEffect(() => {
     if (debouncedText) {
-      setErros(validateCep(debouncedText).errors);
-      setCepOk(validateCep(debouncedText).errors.length === 0);
+      const { errors } = validateCep(debouncedText);
+      setErrors(errors);
+      setCepOk(errors.length === 0);
       setCep(debouncedText);
     }
   }, [debouncedText]);
@@ -36,9 +32,14 @@ export default function useCep(cepText: string) {
         setCepData(data);
       });
     }
-  }, [isCepOk]);
+  }, [cep, isCepOk]);
 
-  return { cep, cepData, isCepOk, erros };
+  return {
+    cep,
+    cepData,
+    isCepOk,
+    errors,
+  };
 }
 
 function validateCep(cep: string) {
@@ -51,7 +52,6 @@ function validateCep(cep: string) {
 
 async function getCep(cep: string) {
   const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-  const data = await response.json();
-  console.log(data);
+  const data: CepInfo = await response.json();
   return data;
 }
