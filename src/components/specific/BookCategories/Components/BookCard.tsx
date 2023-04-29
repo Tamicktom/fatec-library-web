@@ -1,4 +1,5 @@
 //* Libraries imports
+import Link from "next/link";
 import Image from "next/image";
 
 //* Components imports
@@ -9,6 +10,7 @@ type Props = {
   title: string;
   author: string;
   category: string[];
+  link: string;
 }
 
 export default function BookCard(props: Props) {
@@ -19,7 +21,10 @@ export default function BookCard(props: Props) {
   const author = props.author.length > cut ? props.author.slice(0, cut) + "..." : props.author;
 
   return (
-    <div className="flex flex-col items-start justify-start overflow-hidden w-44">
+    <Link
+      href={props.link}
+      className="flex flex-col items-start justify-start overflow-hidden w-44"
+    >
       <div className="h-64 overflow-hidden rounded-lg w-44">
         <Image
           className="object-cover w-full h-full"
@@ -43,6 +48,6 @@ export default function BookCard(props: Props) {
             : <div className="h-4" />
         }
       </div>
-    </div>
+    </Link>
   );
 }

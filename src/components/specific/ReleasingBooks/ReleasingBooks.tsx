@@ -40,6 +40,7 @@ export default function ReleasingBooks() {
                     title={book.title}
                     author={book.author?.name || ""}
                     price={book.price}
+                    link={`/book/${book.id}`}
                   />
                 );
               })

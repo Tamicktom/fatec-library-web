@@ -24,6 +24,7 @@ export default function Category(props: Props) {
                 title={book.title}
                 author={book.author?.name || ""}
                 category={book.categorie?.name?.split(",") || []}
+                link={`/book/${book.id}`}
               />
             })
             : <div className="h-60" />

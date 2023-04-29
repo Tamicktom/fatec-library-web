@@ -11,11 +11,10 @@ import { resolve } from "path";
 export const books = createTRPCRouter({
   mainBannerList: publicProcedure.query(async ({ ctx }) => {
     const books = await ctx.prisma.book.findMany({
-      //search books published in the last 7 days, bring the first 5
-      where: {
-        createdAt: {
-          gte: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000),
-        },
+      //search the last 7 published book by date
+      take: 7,
+      orderBy: {
+        createdAt: "desc",
       },
     });
     //for each book, add the author

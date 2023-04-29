@@ -1,4 +1,5 @@
 //*Libraries imports
+import Link from "next/link";
 import Image from "next/image";
 
 type ReleasingBookCardProps = {
@@ -6,13 +7,18 @@ type ReleasingBookCardProps = {
   title: string;
   author: string;
   price: number;
+  link: string;
 }
 
 export default function ReleasingBookCard(props: ReleasingBookCardProps) {
   const price = props.price.toFixed(2).split(".");
 
   return (
-    <div className="keen-slider__slide w-[400px] h-60 relative flex flex-col justify-end items-center">
+    <Link
+      href={props.link}
+      about="book"
+      className="keen-slider__slide w-[400px] h-60 relative flex flex-col justify-end items-center"
+    >
       {/* last release */}
       <div className="relative flex flex-row justify-end w-full h-32 pt-1 pb-4 pr-2 overflow-hidden rounded-lg pl-44">
         {/* bg */}
@@ -34,7 +40,6 @@ export default function ReleasingBookCard(props: ReleasingBookCardProps) {
             <span className="text-xl font-bold text-gray-100">{props.title}</span>
             <span className="text-xs font-normal text-gray-200">{props.author}</span>
           </div>
-
           <span className="text-2xl font-bold text-gray-100">R$ {price[0]}<span className="text-xl">,{price[1]}</span></span>
         </div>
       </div>
@@ -52,6 +57,6 @@ export default function ReleasingBookCard(props: ReleasingBookCardProps) {
           priority
         />
       </div>
-    </div>
+    </Link>
   );
 }
