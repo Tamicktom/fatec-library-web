@@ -7,6 +7,15 @@ import {
 } from "pnpm/server/api/trpc";
 
 export const authors = createTRPCRouter({
+  getAuthor: publicProcedure.input(z.string()).query(async ({ input, ctx }) => {
+    const author = await ctx.prisma.author.findUnique({
+      where: {
+        id: input,
+      },
+    });
+    return author;
+  }),
+
   getPopularAuthors: publicProcedure.query(async ({ ctx }) => {
     const authors = await ctx.prisma.author.findMany({
       take: 5,

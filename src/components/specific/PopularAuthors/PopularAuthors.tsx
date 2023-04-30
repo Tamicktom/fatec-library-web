@@ -1,5 +1,5 @@
 //* Libraries imports
-import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 import { api } from "pnpm/utils/api";
@@ -18,6 +18,7 @@ export default function PopularAuthors() {
               return (
                 <AuthorCard
                   key={index}
+                  id={author.id}
                   name={author.name}
                   image={author.image}
                   books={author.booksCount}
@@ -32,6 +33,7 @@ export default function PopularAuthors() {
 }
 
 type AuthorCardProps = {
+  id: string;
   name: string;
   image: string;
   books: number;
@@ -39,7 +41,7 @@ type AuthorCardProps = {
 
 function AuthorCard(props: AuthorCardProps) {
   return (
-    <div className="flex flex-row items-center justify-start gap-4">
+    <Link href={`/author/${props.id}`} className="flex flex-row items-center justify-start gap-4">
       <div className="flex items-center justify-center w-20 h-20 overflow-hidden rounded-full">
         <Image
           src={props.image}
@@ -58,6 +60,6 @@ function AuthorCard(props: AuthorCardProps) {
           {props.books > 1 ? `${props.books} livros` : `${props.books} livro`}
         </span>
       </div>
-    </div>
+    </Link>
   );
 }
